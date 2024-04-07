@@ -9,10 +9,12 @@ function App() {
   // Incrementa el contador de clics
   const incrementNum = () => {
     setNumClics(numClics + 1)
+    console.log(`Incrementa el num: ${numClics}`)
   }
   // reiniciar el contador
   const reiniciarNum = () => {
     setNumClics(0)
+    console.log(`Reiniciar num`)
   }
   
   return (
