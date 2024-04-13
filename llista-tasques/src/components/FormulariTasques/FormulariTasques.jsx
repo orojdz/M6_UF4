@@ -1,6 +1,8 @@
 import { useState } from 'react'
+import { IconButton, InputAdornment, TextField } from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
 
-export function FormulariTasques({ funcAfegirTasca }) {
+export function FormulariTasques({ funcAfegirTasca, id }) {
   const [textTasca, setTextTasca] = useState('')
 
   const canviTextTasca = e => {
@@ -10,9 +12,11 @@ export function FormulariTasques({ funcAfegirTasca }) {
   const enviarForm = e => {
     e.preventDefault()
     const tascaNova = {
+      id: id,
       text: textTasca,
       completada: false
     }
+    console.log(id, ' : ', textTasca )
     funcAfegirTasca(tascaNova)
     setTextTasca('')
   }
@@ -24,7 +28,10 @@ export function FormulariTasques({ funcAfegirTasca }) {
           value={textTasca}
           onChange={canviTextTasca} 
           placeholder="New task"/>
-        <button type="submit">Add task</button>
+        <IconButton type='submit' className='afegirTasca' aria-label="add">
+          <AddIcon />
+        </IconButton>
+        {/* <button type="submit">Add task</button> */}
       </form>
     </>
   );
