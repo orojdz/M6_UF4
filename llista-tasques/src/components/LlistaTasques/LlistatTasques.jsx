@@ -8,10 +8,12 @@ export function LlistatTasques() {
 
     const afegirTasca = (tasca) => {
       const tasquesActuals = tasques
-      setTasques([
-        ...tasques,
-        {id: tasquesActuals.length, text: tasca.text, completada: false}
-      ])
+      if (tasca.text.trim() !== "") {
+        setTasques([
+          ...tasques,
+          {id: tasquesActuals.length, text: tasca.text, completada: false}
+        ])
+      }
     };
 
     const eliminarTasca = id => {
@@ -33,22 +35,24 @@ export function LlistatTasques() {
 
     return(
       <>
-        <h1>Mis tareas</h1>
-        <FormulariTasques
-          funcAfegirTasca={afegirTasca}
-        />
-        <div className="tascaComp">
-          { tasques.map(tasca => (
-            <Tasca 
-              key={tasca.id}
-              id={tasques.indexOf(tasca)} 
-              text={tasca.text}
-              completada={tasca.completada}
-              eliminarTasca={eliminarTasca} 
-              completarTasca={completarTasca}/>
-          ))
-          }
-        </div>
+      <div className="llistaTascas">
+          <h2>To-Do List</h2>
+          <FormulariTasques
+            funcAfegirTasca={afegirTasca}
+          />
+          <div className="tascaComp">
+            { tasques.map(tasca => (
+              <Tasca 
+                key={tasca.id}
+                id={tasques.indexOf(tasca)} 
+                text={tasca.text}
+                completada={tasca.completada}
+                eliminarTasca={eliminarTasca} 
+                completarTasca={completarTasca}/>
+            ))
+            }
+          </div>
+      </div>
       </>
     );
 }
