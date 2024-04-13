@@ -1,4 +1,5 @@
 import React from "react";
+import {Card, CardHeader, CardBody} from "@nextui-org/react";
 import { useState } from 'react'
 import { FormulariTasques } from "../FormulariTasques/FormulariTasques";
 import { Tasca } from "../Tasca/Tasca";
@@ -10,7 +11,7 @@ export function LlistatTasques() {
       const tasquesActuals = tasques
       if (tasca.text.trim() !== "") {
         setTasques([
-          ...tasques,
+          ...tasquesActuals,
           {id: tasquesActuals.length, text: tasca.text, completada: false}
         ])
       }
@@ -35,24 +36,29 @@ export function LlistatTasques() {
 
     return(
       <>
-      <div className="llistaTascas">
-          <h2>To-Do List</h2>
+      <Card>
+        <CardBody className="llistaTascas">   
+          <CardHeader>
+            <h2>To-Do list</h2>
+          </CardHeader> 
           <FormulariTasques
+            id={tasques.length}
             funcAfegirTasca={afegirTasca}
           />
           <div className="tascaComp">
             { tasques.map(tasca => (
               <Tasca 
                 key={tasca.id}
-                id={tasques.indexOf(tasca)} 
+                id={tasca.id} 
                 text={tasca.text}
                 completada={tasca.completada}
                 eliminarTasca={eliminarTasca} 
                 completarTasca={completarTasca}/>
-            ))
+              ))
             }
           </div>
-      </div>
+        </CardBody>
+      </Card>
       </>
     );
 }

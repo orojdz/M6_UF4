@@ -1,12 +1,19 @@
-:root {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+* { 
+  font-family: 'Space Mono', monospace;
   line-height: 1.5;
   font-weight: 400;
-
   font-synthesis: none;
-  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizelegibility;
+  letter-spacing: -0.25px;
+}
+
+h2 {
+  font-weight: 900;
+  color: hsl(0, 0%, 23%);
 }
 
 #root {
@@ -14,11 +21,12 @@
   justify-content: center;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
 }
 
 .llistaTascas {
-  width: 70vw;
+  padding: 2em;
+  border-radius: 1em;
+  background-color: #d1dfd3bb;
 }
 
 .formComp {
@@ -29,23 +37,11 @@
 }
 
 .formInput {
-  width: 20vw;
+  width: 30vw;
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 5px 0px 0px 5px;
-}
-
-button {
-  padding: 11px;
-  background-color: #2871c4;
-  color: white;
+  border-radius: 25px;
   border: none;
-  border-radius: 0px 5px 5px 0px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #0c4485;
 }
 
 .tascaCompletada {
@@ -59,17 +55,21 @@ button:hover {
   gap: 1em;
 }
 
+span {
+  padding-left: 1em;
+}
+
 .tascaComponents {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 25.5vw;
+  width: 33vw;
   padding: 10px;
-  border-radius: 5px;
-  background-color: #f3eef8bd;
+  border-radius: 25px;
+  background-color: #cfa1fdbd;
 }
 
 .btnIcon {
   margin-left: auto;
   cursor: pointer;
-}
+} 
