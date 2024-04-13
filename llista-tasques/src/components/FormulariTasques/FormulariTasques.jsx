@@ -20,11 +20,11 @@ export function FormulariTasques({ funcAfegirTasca }) {
   return(
     <>
       <form className="formComp" onSubmit={enviarForm}>
-        <input type="text"
+        <input className="formInput" type="text"
           value={textTasca}
           onChange={canviTextTasca} 
-          placeholder="Aprender React"/>
-        <button type="submit">Agregar tarea</button>
+          placeholder="New task"/>
+        <button type="submit">Add task</button>
       </form>
     </>
   );
