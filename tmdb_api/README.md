@@ -1,4 +1,4 @@
-# UF4. The Movie Data Base + postman
+# UF4. The Movie Data Base + Postman
 
 ### Objectiu
 Mitjançant la plataforma The Movie Database invocarem a la seva API per a que ens permeti afegir
