@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { IconButton, InputAdornment, TextField } from '@mui/material';
+import { IconButton,  InputAdornment, TextField } from '@mui/material';
+import {Tooltip} from "@nextui-org/react";
 import AddIcon from '@mui/icons-material/Add';
 
 export function FormulariTasques({ funcAfegirTasca, id }) {
@@ -16,7 +17,6 @@ export function FormulariTasques({ funcAfegirTasca, id }) {
       text: textTasca,
       completada: false
     }
-    console.log(id, ' : ', textTasca )
     funcAfegirTasca(tascaNova)
     setTextTasca('')
   }
@@ -24,14 +24,24 @@ export function FormulariTasques({ funcAfegirTasca, id }) {
   return(
     <>
       <form className="formComp" onSubmit={enviarForm}>
-        <input className="formInput" type="text"
+      <TextField 
+          className="formInput customTextField" 
           value={textTasca}
           onChange={canviTextTasca} 
-          placeholder="New task"/>
-        <IconButton type='submit' className='afegirTasca' aria-label="add">
-          <AddIcon />
-        </IconButton>
-        {/* <button type="submit">Add task</button> */}
+          label="New task"
+          color="secondary"
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <Tooltip content="Add task">
+                  <IconButton type='submit' aria-label="add">
+                    <AddIcon />
+                  </IconButton>
+                </Tooltip>
+              </InputAdornment>
+            ),
+          }}
+        />
       </form>
     </>
   );
