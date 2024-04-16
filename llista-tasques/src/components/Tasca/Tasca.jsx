@@ -1,6 +1,7 @@
 import React from "react";
 import IconButton from '@mui/material/IconButton';
 import HighlightOffOutlinedIcon from '@mui/icons-material/HighlightOffOutlined';
+import {Tooltip} from "@nextui-org/react";
 
 export function Tasca({id, text, completada, eliminarTasca, completarTasca}) {
     const tascaClassName = completada ? "tascaCompletada" : "tascaComp"
@@ -21,9 +22,11 @@ export function Tasca({id, text, completada, eliminarTasca, completarTasca}) {
             <div className="tascaComponents">
                 <span>{text}</span>
               <div className="btnTasca">
-                <IconButton className="btnIcon" size="small" onClick={btnEliminar}>
-                  <HighlightOffOutlinedIcon fontSize="inherit"/>
-                </IconButton>
+                <Tooltip content="Delete">
+                  <IconButton className="btnIcon" size="small" onClick={btnEliminar}>
+                    <HighlightOffOutlinedIcon fontSize="inherit"/>
+                  </IconButton>
+                </Tooltip>
               </div>
             </div>
           </div>
