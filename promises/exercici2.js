@@ -1,7 +1,7 @@
 /*Assigna-li una promesa a una variable que comprovi si un valor és major o igual a 0 i menor o
 igual a 10.*/
 
-const esMajorOIgual = (n) => {
+const esMajorOIgual = async (n) => {
     return new Promise((resolve, reject) => {
         if (n >= 0 && n <= 10)
             resolve(`${n} Esta dins del rang entre 1 i 10`)
