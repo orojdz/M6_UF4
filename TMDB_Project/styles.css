@@ -67,6 +67,12 @@ main{
 .menu ul li .active, .menu ul li a:hover{
     border-bottom: 4px solid var(--verd);
     padding-bottom: 5px;
+
+}
+
+#loader {
+    display: flex;
+    justify-content: center; 
 }
 
 #moviesResult{
@@ -114,4 +120,3 @@ main{
 .iconActive:hover{
     color: var(--gray);
 }
-
