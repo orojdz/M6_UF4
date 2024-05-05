@@ -8,6 +8,8 @@ const keys = {
 
 let total_pages = 0;
 let current_page = 1;
+let lastSearch = '';
+let isSearching = false
 
 let url = `https://api.themoviedb.org/3/`
 
@@ -50,37 +52,57 @@ async function showFavs() {
     movies.forEach(movie => printMovie(movie, true, false))
 }
 
-async function searchMovies(query) {
+async function searchMovies(newQuery) {
+    isSearching = true;
+
+    // nova cerca
+    if (lastSearch != newQuery) {
+        current_page = 1;
+        moviesResult.innerHTML = '';
+    }
+    
     clearInput();
-    console.log(query)
-    let searchURL = url + `search/movie?query=${query}&api_key=${keys.api_key}`
+    removeActive();
+    lastSearch = newQuery;
+    
+    let searchURL = url + `search/movie?query=${newQuery}&api_key=${keys.api_key}&page=${current_page}`
     
     // Obtener las películas favoritas
     let favsURL = url + `account/${keys.account_id}/favorite/movies?session_id=${keys.session_id}&api_key=${keys.api_key}`;
     let favsResponse = await fetch(favsURL);
     let favsData = await favsResponse.json();
     let favoriteMovies = favsData.results.map(movie => movie.id);
-
+    
+    total_pages = favsData.total_pages;
+    current_page++;
+    
     fetch(searchURL)
-    .then((response) => response.json())
-    .then((data) => {
-        moviesResult.innerHTML = ''
-        data.results.forEach(movie => {
-            let isFavorite = favoriteMovies.includes(movie.id) 
-            printMovie(movie, isFavorite, false) 
-        });
-        console.log(data.results)
-    })
-    .catch(err => console.log(err));
+        .then((response) => response.json())
+        .then((data) => {
+            data.results.forEach(movie => {
+                let isFavorite = favoriteMovies.includes(movie.id) 
+                printMovie(movie, isFavorite, false) 
+            });
+        })
+        .catch(err => console.log(err));
+        
+    // console.log('total page: ', total_pages)
+    // console.log('current page: ', current_page)
+    
+    isSearching = false
+
+    hideLoading();
     removeActive();
 }
 
 /* Detecta scroll */
 window.addEventListener('scroll', () => {
-    const {scrollTop, scrollHeight,clientHeight} = document.documentElement;
-    if (scrollTop + clientHeight >= scrollHeight - 5 && current_page<total_pages) {
+    const {scrollTop, scrollHeight, clientHeight} = document.documentElement;
+    if (!isSearching && scrollTop + clientHeight >= scrollHeight - 5 && current_page >= total_pages) {
+        isSearching = true
+        isLoading();
+        searchMovies(lastSearch);
         current_page++;
-        searchMovies(query);
     }
 });
 
@@ -116,12 +138,22 @@ document.querySelector(".searchBar i").addEventListener("click", () => searchMov
 // Netejar l'input
 document.getElementById("search").addEventListener('click', () => clearInput()); 
 
-function clearInput() {
+// // loader
+function isLoading() {
+    document.querySelector('#loader').style.display = 'block';
+}
+
+// ocultar loader
+function hideLoading() {
+    document.querySelector('#loader').style.display = 'none';
+}
+
+function clearInput () {
     document.getElementById("search").value = "";
 }
 
 // Elimina l'atribut active del menú
-function removeActive(){
+function removeActive () {
     document.querySelectorAll(".menu li a").forEach(el => el.classList.remove("active"));
 }
 
@@ -139,3 +171,5 @@ function printMovie(movie, fav, watch){
                                         <a id="watch" onClick="setWatch(${movie.id}, ${!watch})"><i class="fa-solid fa-eye ${watchIcon}"></i></a>
                                     </div>`;
 }
+
+document.addEventListener("DOMContentLoaded", showFavs())
