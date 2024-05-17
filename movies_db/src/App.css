@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 * { 
   font-family: 'Space Mono', monospace;
@@ -9,11 +9,23 @@
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizelegibility;
   letter-spacing: -0.25px;
-}
+} */
 
 #root {
-  max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
+}
+
+.moviesListComp {  
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2em;
+  border: 2px dotted green;
+}
+
+.cards {
+  padding: 1em;
+  border: 1px solid blue;
 }

@@ -1,23 +1,26 @@
-import React from "react";
-import { Card, CardFooter, CardBody, Image } from "@nextui-org/react";
+import { CardComp } from './Card';
+import { CardFooter, CardBody } from '@nextui-org/card'
+import { Image } from '@nextui-org/image';
 
 export function MovieCard({ title, image, rate, direction }) {
     return(
-        <Card shadow="sm">
-            <CardBody>
-                <Image 
-                    shadow="sm"
-                    width="100%"
-                    alt={title}
-                    className="movie-cover"
-                    src={image}
-                />
-            </CardBody>
-            <CardFooter className="movie-title">
-                <b>{title}</b>
-                <p className="text-default-500"> {rate} </p>
-                <p>{direction}</p>
-            </CardFooter>
-        </Card>
+        <div>
+            <CardComp>
+                <CardBody className="overflow-visible py-2">
+                    <Image 
+                        className="object-cover rounded-xl"
+                        width={240}
+                        alt={title}
+                        src={image}
+                    />
+                
+                </CardBody>
+                <CardFooter  className="pb-0 pt-2 px-4 flex-col items-start">
+                    <h3 className="font-bold text-large">{title}</h3>
+                    <p className="text-tiny uppercase font-bold">Director: {direction}</p>
+                    <small className="text-default-500"> Rate: {rate} </small>
+                </CardFooter> 
+            </CardComp>
+        </div>
     );
-}
+} 
