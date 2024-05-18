@@ -1,17 +1,9 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-
-* { 
-  font-family: 'Space Mono', monospace;
-  line-height: 1.5;
-  font-weight: 400;
-  font-synthesis: none;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizelegibility;
-  letter-spacing: -0.25px;
-} */
 
 #root {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
   margin: 0 auto;
   padding: 2rem;
 }
@@ -19,13 +11,36 @@
 .moviesListComp {  
   width: 100%;
   display: grid;
-  justify-items: center;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2em;
-  border: 2px dotted green;
+  gap: 1em 1em;
+  padding: 1em;
 }
 
 .cards {
   padding: 1em;
-  border: 1px solid blue;
+}
+
+.typography-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%; 
+}
+
+.select .toList {
+  border: 2 dotted dodgerblue;
+}
+
+.select .toAdd {
+  border: 2 dotted darkcyan;
+}
+
+@media screen and (max-width: 640px) {
+  .moviesListComp {
+    width: 80%;
+    grid-template-columns: 1fr;
+  }
+  .moviesCards {
+    padding: .6em;
+  }
 }
