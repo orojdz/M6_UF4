@@ -1,26 +1,43 @@
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
 import { CardComp } from './Card';
-import { CardFooter, CardBody } from '@nextui-org/card'
-import { Image } from '@nextui-org/image';
 
 export function MovieCard({ title, image, rate, direction }) {
-    return(
-        <div>
-            <CardComp>
-                <CardBody className="overflow-visible py-2">
-                    <Image 
-                        className="object-cover rounded-xl"
-                        width={240}
-                        alt={title}
-                        src={image}
-                    />
-                
-                </CardBody>
-                <CardFooter  className="pb-0 pt-2 px-4 flex-col items-start">
-                    <h3 className="font-bold text-large">{title}</h3>
-                    <p className="text-tiny uppercase font-bold">Director: {direction}</p>
-                    <small className="text-default-500"> Rate: {rate} </small>
-                </CardFooter> 
-            </CardComp>
-        </div>
+    return (
+        <CardComp size={200}>
+            <Card className="cards" sx={{ maxWidth: 280 }}>
+                <CardMedia sx={{ height: 290 }}
+                  image={image}
+                  title={title}
+                />
+                <CardContent>
+                    <Typography 
+                        gutterBottom 
+                        variant="h5"
+                        component="div"
+                        className="typography-title"
+                        sx={{
+                            whiteSpace: 'nowrap',
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            maxWidth: '100%',
+                            fontFamily: 'Roboto',
+                            fontWeight: 700,
+                            fontSize: '1.25rem'
+                        }}>
+                        {title}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary" sx={{ fontFamily: 'Roboto'}}>
+                        {direction}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary" sx={{ fontFamily: 'Roboto'}}>
+                        {rate}
+                    </Typography>
+                </CardContent>
+            </Card>
+            
+        </CardComp>
     );
-} 
+}
