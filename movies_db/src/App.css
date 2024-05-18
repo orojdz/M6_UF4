@@ -16,9 +16,9 @@
   padding: 1em;
 }
 
-.cards {
+/* .cards {
   padding: 1em;
-}
+} */
 
 .typography-title {
   white-space: nowrap;
@@ -27,12 +27,13 @@
   max-width: 100%; 
 }
 
-.select .toList {
-  border: 2 dotted dodgerblue;
-}
-
-.select .toAdd {
-  border: 2 dotted darkcyan;
+.select {
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
+  padding: 1em;
+  background-color: blue;
+  text-align: center;
 }
 
 @media screen and (max-width: 640px) {
@@ -42,5 +43,10 @@
   }
   .moviesCards {
     padding: .6em;
+  }
+  .select{
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
   }
 }
