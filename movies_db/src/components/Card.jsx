@@ -1,10 +1,9 @@
-import { Card } from "@nextui-org/card";
-import { Image } from "@nextui-org/image";
+import React from "react";
 
-export function CardComp() {
+export function CardComp({ size, children }) {
     return (
-        <Card className="cards">
-            
-        </Card>
+        <div sx={{ minWidth: size }}>
+            {children}
+        </div>
     );
 }
