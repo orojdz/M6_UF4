@@ -1,11 +1,28 @@
-
 #root {
   display: flex;
   flex-direction: column;
-  justify-items: center;
-  align-items: center;
   margin: 0 auto;
   padding: 2rem;
+}
+
+h1, h2 {
+  text-align: center;
+  color: rgb(255, 255, 255);
+}
+
+.addTitle {
+  color: rgb(143, 143, 245);
+}
+
+label {
+  color: palevioletred
+}
+
+input, textarea {
+  background-color: rgb(212, 212, 212);
+  color: black;
+  text-decoration: none;
+  font-family: Roboto;
 }
 
 .moviesListComp {  
@@ -30,10 +47,70 @@
 .select {
   display: flex;
   flex-direction: row;
+  align-content: center;
+  justify-content: center;
   gap: 2em;
   padding: 1em;
-  background-color: blue;
   text-align: center;
+}
+
+.moviesAddComp {
+  width: 50%;
+  margin: 0 auto;
+  padding: 2em;
+  background-color: #665f5f5d;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(209, 206, 206, 0.1);
+}
+
+.moviesAddComp h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.moviesAddComp .form-group {
+  margin-bottom: 15px;
+}
+
+.moviesAddComp .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+}
+
+.moviesAddComp .form-group input,
+.moviesAddComp .form-group textarea {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: .5em;
+}
+
+.inputBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.moviesAddComp.form-group textarea {
+  resize: vertical;
+}
+
+.moviesAddComp button {
+  width: 50%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: .5em;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.moviesAddComp button:hover {
+  background-color: #0056b3;
 }
 
 @media screen and (max-width: 640px) {
