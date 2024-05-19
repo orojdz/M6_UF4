@@ -1,6 +1,5 @@
 import { CardComp } from '../components/Card'
 import Card from '@mui/material/Card';
-import { CardContent, CardActionArea } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 export function IndexMenu() {
@@ -8,27 +7,20 @@ export function IndexMenu() {
         <div className='select'>
             <div className="toList">
                 <CardComp>
-                    <Card sx={{ minWidth: 250 }}>
-                        <Link to="/movies/list">
-                            <CardActionArea>
-                                <CardContent >
-                                    Lista de peliculas
-        
-                                </CardContent>
-                            </CardActionArea>
-                        </Link>
-                    </Card>
+                    <Link to="/movies/list">
+                        <Card sx={{ minWidth: 250, minHeight: 250}}>
+                            <h4>Llista de pel·lícules</h4>
+                        </Card>
+                    </Link>
                 </CardComp>
             </div>
             <div className='toAdd'>
                 <CardComp>
-                    <Card sx={{ minWidth: 250 }}>
-                        <CardActionArea>
-                            <CardContent>
-                                <Link to="/movies/add">Añadir una pelicula</Link>
-                            </CardContent>
-                        </CardActionArea>
-                    </Card>
+                    <Link to="/movies/add">
+                        <Card sx={{ minWidth: 250, minHeight: 250 }}>
+                            <h4>Afegeix una pel·lícula</h4>
+                        </Card>
+                    </Link>
                 </CardComp> 
             </div>
         </div>
