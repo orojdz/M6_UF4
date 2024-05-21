@@ -22,7 +22,7 @@ export function MoviesAdd() {
         }));
     };
 
-    const handleSubmit = async (e) => {
+    const addMovie = async (e) => {
         e.preventDefault();
         try {
           await addDoc(collection(db, 'movies'), movie);
@@ -31,7 +31,7 @@ export function MoviesAdd() {
             title: '',
             description: '',
             director: '',
-            imageUrl: '',
+            image: '',
             rating: '',
             year: '',
             duration: ''
@@ -57,34 +57,34 @@ export function MoviesAdd() {
                 }}>
                 <h2 className="addTitle">Afegeix una pel·lícula</h2>
             </Typography>
-            <form onSubmit={console.log("funciona")}>
+            <form onSubmit={ addMovie }>
                 <div className="form-group">
                     <label>Títol</label>
-                    <input type="text" name="title" required />
+                    <input type="text" name="title" value={movie.title} onChange={handleChange} required />
                 </div>
                 <div className="form-group">
                     <label>Descripció</label>
-                    <textarea name="description" required />
+                    <textarea name="description" value={movie.description} onChange={handleChange} required />
                 </div>
                 <div className="form-group">
                     <label>Direcció</label>
-                    <input type="text" name="director" required />
+                    <input type="text" name="director" value={movie.director} onChange={handleChange} required />
                 </div>
                 <div className="form-group">
                     <label>Imatge (URL)</label>
-                    <input type="url" name="imageUrl" required />
+                    <input type="url" name="image" value={movie.image} onChange={handleChange} required />
                 </div>
                 <div className="form-group">
                     <label>Nota (1-5)</label>
-                    <input type="number" name="rating" required />
+                    <input type="number" name="rate" value={movie.rate} onChange={handleChange} required />
                 </div>
                 <div className="form-group">
                     <label>Any</label>
-                    <input type="number" name="year" required />
+                    <input type="number" name="year" value={movie.year} onChange={handleChange} required />
                 </div>
                 <div className="form-group">
                     <label>Durada (min)</label>
-                    <input type="number" name="duration" required />
+                    <input type="number" name="duration" value={movie.duration} onChange={handleChange} required />
                 </div>
                 <div className="inputBtn">
                     <button type="submit">Afegir Pel·lícula</button>
