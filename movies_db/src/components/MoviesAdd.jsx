@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Typography } from "@mui/material";
 import db from "../config/config";
-import { collection, addDoc, doc, getDocs} from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 
 export function MoviesAdd() {
     const [movie, setMovie] = useState({
@@ -22,12 +22,12 @@ export function MoviesAdd() {
         }));
     };
 
-    const addMovie = async (e) => {
+    const addMovie = (e) => {
         e.preventDefault();
-        try {
-          await addDoc(collection(db, 'movies'), movie);
-          alert('Pel·lícula afegida amb èxit');
-          setMovie({
+        // afegir dades a la colecció 'movies' de la sb
+        addDoc(collection(db, 'movies'), movie);
+     
+        setMovie({
             title: '',
             description: '',
             director: '',
@@ -35,11 +35,8 @@ export function MoviesAdd() {
             rating: '',
             year: '',
             duration: ''
-          });
-        } catch (e) {
-          console.error('Error adding document: ', e);
-        }
-      };
+        });
+    };
 
     return(
         <div className='moviesAddComp'>
