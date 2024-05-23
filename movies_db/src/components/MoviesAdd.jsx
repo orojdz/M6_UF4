@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { Typography } from "@mui/material";
 import db from "../config/config";
 import { collection, addDoc } from "firebase/firestore";
+import { Link } from "react-router-dom";
 
 export function MoviesAdd() {
     const [movie, setMovie] = useState({
@@ -32,7 +33,7 @@ export function MoviesAdd() {
             description: '',
             director: '',
             image: '',
-            rating: '',
+            rate: '',
             year: '',
             duration: ''
         });
@@ -42,17 +43,18 @@ export function MoviesAdd() {
         <div className='moviesAddComp'>
             <Typography
             gutterBottom 
-              variant="h2"
+              variant="h3"
                 component="div"
                 className="typography-title"
+                textAlign="center"
                 sx={{
                     whiteSpace: 'nowrap',
                     maxWidth: '100%',
                     fontFamily: 'Roboto',
-                    fontWeight: 700,
+                    fontWeight: 500,
                     fontSize: '1.25rem',
                 }}>
-                <h2 className="addTitle">Afegeix una pel·lícula</h2>
+                <h3 className="addTitle">Afegeix una pel·lícula 🎥</h3>
             </Typography>
             <form onSubmit={ addMovie }>
                 <div className="form-group">
@@ -64,7 +66,7 @@ export function MoviesAdd() {
                     <textarea name="description" value={movie.description} onChange={handleChange} required />
                 </div>
                 <div className="form-group">
-                    <label>Direcció</label>
+                    <label>Director</label>
                     <input type="text" name="director" value={movie.director} onChange={handleChange} required />
                 </div>
                 <div className="form-group">
