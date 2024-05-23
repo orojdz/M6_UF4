@@ -90,8 +90,8 @@ input, textarea {
 .rate {
   display: flex;
   flex-direction: row;
-  gap: 2px;
-  margin-top: 2px;
+  gap: 4px;
+  margin: 2px;
 }
 
 .rate-star {
@@ -101,12 +101,11 @@ input, textarea {
 .icon-info {
   display: flex;
   flex-direction: column;
-  align-items: end;
-  margin: 0 19px;
+  margin: 4px;
 }
 
 .movie-title {
-  margin: 0 9px 12px;
+  margin: 0 9px 20px;
   font-size: 1.5em;
 }
 
