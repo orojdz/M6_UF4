@@ -15,3 +15,9 @@ Llista de tasques amb un formulari per afegir-ne.
 Cada tasca es pot eliminar o modificar el seu estat a completada.
 
 ![React to do](img/todolist.png)
+
+### Projecte Movies: React + Firebase
+
+Aplicació Web que serveix per a afegir películ·les a la colecció movies de Firebase i llegir les dades  
+
+![Movies](img/moviesdb.png)
