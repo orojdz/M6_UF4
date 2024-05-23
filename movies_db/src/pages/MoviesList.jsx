@@ -29,37 +29,32 @@ export function MoviesList() {
       })
   }, []);
 
+  // eliminar pelicula de la lista
+  const deleteMovie = (id) => {
+    const movieDoc = doc(db, "movies", id);
+    deleteDoc(movieDoc)
+      
+        alert("Pel·lícula eliminada amb èxit");
+        setMovies(movies.filter(movie => movie.id !== id))
+      
+  }
+
   return (
-      <div>
-        <Link to='/'>
-          <Typography
-            gutterBottom 
-              variant="h2"
-                component="div"
-                className="typography-title"
-                sx={{
-                    whiteSpace: 'nowrap',
-                    maxWidth: '100%',
-                    fontFamily: 'Roboto',
-                    fontWeight: 700,
-                    fontSize: '1.25rem',
-                }}>
-
-            <h2>Llista de pel·lícules</h2>
-          </Typography>
-        </Link>
-
-        <div className="moviesListComp" >
-          {movies.map(movie => (
-            <MovieCard
-              key={movie.id}
-              title={movie.title} 
-              image={movie.image}
-              rate={movie.rate}
-              direction={movie.direction}
-            />
-          ))}
-        </div>
+      <div className="moviesListComp" >
+        {movies.map(movie => (
+          <MovieCard
+            key={movie.id}
+            id={movie.id}
+            title={movie.title} 
+            year={movie.year}
+            image={movie.image}
+            rate={movie.rate}
+            director={movie.director}
+            duration={movie.duration}
+            description={movie.description}
+            onDelete={deleteMovie}
+          />
+        ))}
       </div>
   );
 }
