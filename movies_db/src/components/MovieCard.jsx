@@ -1,6 +1,5 @@
 import StarRateIcon from '@mui/icons-material/StarRate';
 import DeleteIcon from '@mui/icons-material/Delete';
-import HeartIcon from './HeartIcon';
 import { CardComp } from './Card';
 
 export function MovieCard({ id, title, year, image, rate, director, description, duration, onDelete }) {
@@ -33,7 +32,7 @@ export function MovieCard({ id, title, year, image, rate, director, description,
                 <div className="movie-card-body">
                     <small className='movie-director'><strong>{director}</strong></small>
                     <div className='desc-heart'>
-                        <p className="movie-description">{ abbrDesc(description)}</p> <HeartIcon />
+                        <p className="movie-description">{ abbrDesc(description)}</p>
                     </div>
                 </div>
             </div>
