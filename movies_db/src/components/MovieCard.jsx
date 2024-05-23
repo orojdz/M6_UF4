@@ -1,26 +1,42 @@
+import StarRateIcon from '@mui/icons-material/StarRate';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { CardComp } from './Card';
-import { CardFooter, CardBody } from '@nextui-org/card'
-import { Image } from '@nextui-org/image';
 
-export function MovieCard({ title, image, rate, direction }) {
-    return(
-        <div>
-            <CardComp>
-                <CardBody className="overflow-visible py-2">
-                    <Image 
-                        className="object-cover rounded-xl"
-                        width={240}
-                        alt={title}
-                        src={image}
-                    />
-                
-                </CardBody>
-                <CardFooter  className="pb-0 pt-2 px-4 flex-col items-start">
-                    <h3 className="font-bold text-large">{title}</h3>
-                    <p className="text-tiny uppercase font-bold">Director: {direction}</p>
-                    <small className="text-default-500"> Rate: {rate} </small>
-                </CardFooter> 
-            </CardComp>
-        </div>
+export function MovieCard({ id, title, year, image, rate, director, description, duration, onDelete }) {
+      
+    // Función para abreviar la descripción de la película
+    const abbrDesc = (description) => {
+       if (description.length > 20)
+            return description.substring(0, 50) + '...'
+    }
+
+    return (
+        <CardComp size={300}>
+            <div className="movie-card">
+            <div className="movie-icons">
+                <DeleteIcon sx={{ color: 'grey' }} className='icon' onClick={() => onDelete(id)} />
+            </div>
+            <img src={image} alt={title} className="movie-card-image" />
+            <div className="movie-card-overlay">
+                <div className="movie-card-header">
+                    <h3 className="movie-title">{title} ({year})</h3>
+                    <div className='icon-info'>
+                        <div className='rate'>
+                            <small>{rate}</small><StarRateIcon className='rate-star' sx={{ color: 'yellow' }} fontSize='smaller' />
+                        </div>
+                        <div className='duration'>
+                            <small>{duration}m</small>
+                        </div>
+                    </div>
+                </div>
+                <div className="movie-card-body">
+                    <small className='movie-director'><strong>{director}</strong></small>
+                    <div className='desc-heart'>
+                        <p className="movie-description">{ abbrDesc(description)}</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </CardComp>
     );
-} 
+}
