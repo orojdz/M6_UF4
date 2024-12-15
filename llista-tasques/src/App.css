@@ -67,7 +67,7 @@ span {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 29vw;
+  min-width: 29vw;
   height: 5vh;
   padding: 10px;
   border-radius: 5px;
