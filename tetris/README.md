@@ -6,7 +6,7 @@
 ### Pasos:
 
 1. Crear una cuadrícula de juego:
-    - [ ] Implementa un tablero de 10 columnas por 20 filas usando un array bidimensional.
+    - [x] Implementa un tablero de 10 columnas por 20 filas usando un array bidimensional.
     - [ ] Cada celda del tablero puede estar vacía o contener parte de una pieza.
 
 2. Definir las piezas de Tetris:

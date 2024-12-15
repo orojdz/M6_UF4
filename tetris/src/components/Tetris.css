@@ -1,0 +1,14 @@
+.board {
+    background-color: #444444cf;
+    width: 300px;
+}
+
+.row { 
+    display: flex;
+    flex-direction: row;
+}
+
+.cell {
+    border: 1px solid #222;
+    padding: 14px;
+}
