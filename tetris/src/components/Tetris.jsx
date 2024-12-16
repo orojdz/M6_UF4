@@ -29,7 +29,6 @@ export function Tetris() {
 
   return (
     <div className="tetris">
-      <h1>Tetris</h1>
       <div className="board">
         {board.map((row, rowIndex) => (
           <div key={rowIndex} className="row">
